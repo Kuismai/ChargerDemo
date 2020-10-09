@@ -2,11 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Header from './Header';
+import Footer from './Footer';
 import * as serviceWorker from './serviceWorker';
+import {DisplayMapClass} from './DisplayMapClass';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Header />
+    <div><App />
+    <DisplayMapClass /></div>
+    <Footer />
   </React.StrictMode>,
   document.getElementById('root')
 );
