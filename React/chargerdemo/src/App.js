@@ -2,9 +2,11 @@ import React from 'react';
 import './App.css';
 
 const locations = [
-  "Helsinki",
+  "Helsinki 1",
+  "Helsinki 2",
   "Oulu",
-  "Tampere"
+  "Tampere",
+  "Turku"
 ]
 
 function App() {
@@ -25,7 +27,7 @@ React.useEffect(() => {
       <header className="App-header">
       </header>
       
-      <input
+        <input
         type="text"
         placeholder="Search"
         value={searchTerm}

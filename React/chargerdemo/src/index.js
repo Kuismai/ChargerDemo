@@ -11,7 +11,7 @@ import {DisplayMapClass} from './DisplayMapClass';
 ReactDOM.render(
   <React.StrictMode>
     <Header />
-    <div><App />
+    <div id="box"><App />
     <DisplayMapClass /></div>
     <Footer />
   </React.StrictMode>,
