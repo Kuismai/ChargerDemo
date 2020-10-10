@@ -3,7 +3,7 @@ import './header.css';
 
 function Header() {
     return (
-        <div>CHARGERER</div>
+        <div id="header">CHARGERER</div>
     )
 }
 

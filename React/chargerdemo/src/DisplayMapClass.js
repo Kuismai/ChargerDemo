@@ -26,10 +26,27 @@ export class DisplayMapClass extends React.Component {
       {
         // This map is centered over Europe
         center: { lat: 65, lng: 25 },
-        zoom: 4,
+        zoom: 5,
         pixelRatio: window.devicePixelRatio || 1
       }
     );
+
+    var svgMarkup = '<svg width="24" height="24" ' +
+    'xmlns="http://www.w3.org/2000/svg">' +
+    '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
+    'height="22" /><text x="12" y="18" font-size="12pt" ' +
+    'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+    'fill="white">H</text></svg>';
+
+    var icon = new H.map.Icon(svgMarkup),
+    coords = {lat: 65.53075, lng: 25.3851},
+    marker = new H.map.Marker(coords, {icon: icon});
+    /*markers = [
+      { coords: {lat: 65, lng: 25},
+      marker: new H.map.Marker(coords, {icon: icon})}
+    ]
+    markers.foreach(map.addObject(this.marker));*/
+    map.addObject(marker);
  
     const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
@@ -47,7 +64,7 @@ export class DisplayMapClass extends React.Component {
   render() {
     return (
       // Set a height on the map so it will display
-      <div ref={this.mapRef} style={{ height: "300px", width: "150px"}} />
+      <div ref={this.mapRef} style={{ height: "600px", width: "300px"}} />
       
     );
   }
