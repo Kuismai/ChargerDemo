@@ -3,6 +3,7 @@ import './App.css';
 import Search from './search.js';
 import Login from './containers/login.js';
 //import { search } from '../../../Express/app';
+import {DisplayMapClass} from './DisplayMapClass';
 
 
 
@@ -50,7 +51,7 @@ buttonText = "blah";
   }
 
    if (search.style.display === "none") {
-     search.style.display = "block";
+     search.style.display = "flex";
      this.buttonText = "Account";
    } else {
      search.style.display = "none";
@@ -83,7 +84,7 @@ render () {
   return (
   <div>
   <button onClick={this.displayChange}>{this.buttonText}</button>
-  <div id="search"><Search dataParenttoChild = {this.state.account}/></div>
+  <div id="search"><Search dataParenttoChild = {this.state.account}/><DisplayMapClass/></div>
   <div id="login"><Login parentCallback = {this.handleCallback}/></div>
   <div id="account"></div>
   </div>

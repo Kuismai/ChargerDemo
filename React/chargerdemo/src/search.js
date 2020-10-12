@@ -161,31 +161,7 @@ useEffect(() => {
   callAPI()
 }, [])
 */
-
-var button = null;
-
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      account: this.props.dataParenttoChild,
-      term: "",
-      results: locations
-    }
-  }
-  
-
-  buttonToggle = () => {
-    if (this.state.account !== null) {
-      return (<button>charge</button>);
-    }
-  }
-
-  handleChange = (event) => {
-    this.state.term = event.target.value;
-  }
-  /*
-mapping = () => {
+function Search() {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
   const handleChange = event => {
@@ -198,41 +174,32 @@ React.useEffect(() => {
     );
     setSearchResults(results);
   }, [searchTerm]);
-  return searchResults;
-}*/
-  render () {
-    var searchTerm = this.state.term;
-    var searchResults = this.state.results;
-    
-    const results = locations.filter(locations =>
-      locations.location.toLowerCase().includes(this.state.term)
-    );
-    this.state.results = results;
-  
 
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      <div>
       
         <input
         type="text"
         placeholder="Search"
-        value={this.searchTerm}
-        onChange={this.handleChange}
+        value={searchTerm}
+        onChange={handleChange}
       />
      <table>
        <tbody>
          <tr><td><b>Location</b></td><td><b>Speed</b></td><td><b>Status</b></td><td><b>Pricing</b></td><td><b>Code</b></td></tr>
          {searchResults.map(item => (
-          <tr><td><b>{item.location}</b></td><td>{item.speed}</td><td>{item.status}</td><td>{item.price}</td><td>{item.code}</td><td>{this.buttonToggle}</td></tr>
+          <tr><td><b>{item.location}</b></td><td>{item.speed}</td><td>{item.status}</td><td>{item.price}</td><td>{item.code}</td><td></td></tr>
         ))}
         </tbody>
         </table>
+        </div>
+        <div>
     
+        
+        </div>
     </div>
   );
-         }
 }
 
 export default Search;

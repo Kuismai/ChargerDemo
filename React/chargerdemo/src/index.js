@@ -5,14 +5,13 @@ import App from './App';
 import Header from './Header';
 import Footer from './Footer';
 import * as serviceWorker from './serviceWorker';
-import {DisplayMapClass} from './DisplayMapClass';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Header />
     <div id="box"><App />
-    <DisplayMapClass /></div>
+    </div>
     <Footer />
   </React.StrictMode>,
   document.getElementById('root')
