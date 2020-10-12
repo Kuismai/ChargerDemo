@@ -25,41 +25,41 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      contents: <div><button onClick={this.startLogin}>Login</button><Search /></div>
+      account: null
     }
   }
 
-  startLogin = () => {
-    this.setState({contents: <Login />});
-  }
+  handleCallback = (childData) =>{
+    this.setState({account: childData})
+}
 
-checkCredentials = () => {
-    console.log("biip");
-    var data = callAPI();
-    if (data.includes(this.state.username)) {
-        console.log("beep");
-    }
-    else {
-        console.log("boop");
-    }
- }
+buttonText = "blah";
+
+
 
  displayChange = () => {
    var search = document.getElementById("search");
    var login = document.getElementById("login");
+    var charger = document.getElementsByName("charger");
 
    if (login.style.display === "block") {
     login.style.display = "none";
   } else {
     login.style.display = "block";
+    this.buttonText = "Search";
   }
 
    if (search.style.display === "none") {
      search.style.display = "block";
+     this.buttonText = "Account";
    } else {
      search.style.display = "none";
+     this.buttonText = "Search";
    }
 
+   if (this.state.account !== null) {
+    charger.style.display = "block";
+   }
   
  }
 
@@ -82,9 +82,10 @@ render () {
 //callAPI();
   return (
   <div>
-  <button onClick={this.displayChange}>Login</button>
-  <div id="search"><Search /></div>
-  <div id="login"><Login /></div>
+  <button onClick={this.displayChange}>{this.buttonText}</button>
+  <div id="search"><Search dataParenttoChild = {this.state.account}/></div>
+  <div id="login"><Login parentCallback = {this.handleCallback}/></div>
+  <div id="account"></div>
   </div>
   ); }
 }

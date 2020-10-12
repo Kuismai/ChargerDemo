@@ -1,12 +1,6 @@
 import React, { useState } from "react";
-
-const callAPI = () => {
-    fetch("http://localhost:9000/users")
-      .then(response => response.json())
-      .then(response => {console.log(response)})
-      .then(response => {return (response)}
-      )
-}
+import App from "../App";
+import Account from "./Account";
 
 
 class Login extends React.Component {
@@ -14,7 +8,8 @@ class Login extends React.Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            account : ''
      };
 
     this.handleInputChange =
@@ -22,27 +17,37 @@ class Login extends React.Component {
 
 }
 
+onTrigger = (event) => {
+    this.props.parentCallback(this.state.account);
+}
+
 checkCredentials = (event) => {
     let uname = this.state.username;
     let pss = this.state.password;
     event.preventDefault();
     console.log("biip");
+    var valid = false;
     var data1 = fetch("http://localhost:9000/users")
     .then(response => response.json())
     .then(response => {
-      response.map((r) => {
+      response = response.map((r) => {
           console.log(r.username);
+          if (valid == false) {
           if (r.username === uname && r.password === pss) {
-            console.log("true");
-            return true;
-            
+            valid = true;
             }
-        else {console.log("false");}});
-        console.log(response);
-    })
-    .then(response => {
-        
-    })
+          }
+        });
+        return valid;
+    });
+
+    if (data1) {
+        console.log("valid");
+        this.state.account = this.state.username;
+        console.log("logged in: " + this.state.account);
+        this.onTrigger();
+    }
+
     //else { console.log("boop")}}
     
  //   .then(response => {return (response.json())}
@@ -74,6 +79,7 @@ handleInputChange(event) {
 
 
     render() {
+        if (this.state.account === "") {
     return (
         <form onSubmit={this.checkCredentials}>
             <label>
@@ -98,8 +104,11 @@ handleInputChange(event) {
             type="submit"
             value="Log In" />
         </form>
-          
     );
+    }
+    else {
+        return (<Account />);
+    }
     }
 }
 

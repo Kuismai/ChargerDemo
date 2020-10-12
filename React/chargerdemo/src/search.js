@@ -161,7 +161,31 @@ useEffect(() => {
   callAPI()
 }, [])
 */
-function Search() {
+
+var button = null;
+
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      account: this.props.dataParenttoChild,
+      term: "",
+      results: locations
+    }
+  }
+  
+
+  buttonToggle = () => {
+    if (this.state.account !== null) {
+      return (<button>charge</button>);
+    }
+  }
+
+  handleChange = (event) => {
+    this.state.term = event.target.value;
+  }
+  /*
+mapping = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
   const handleChange = event => {
@@ -174,6 +198,17 @@ React.useEffect(() => {
     );
     setSearchResults(results);
   }, [searchTerm]);
+  return searchResults;
+}*/
+  render () {
+    var searchTerm = this.state.term;
+    var searchResults = this.state.results;
+    
+    const results = locations.filter(locations =>
+      locations.location.toLowerCase().includes(this.state.term)
+    );
+    this.state.results = results;
+  
 
   return (
     <div className="App">
@@ -183,20 +218,21 @@ React.useEffect(() => {
         <input
         type="text"
         placeholder="Search"
-        value={searchTerm}
-        onChange={handleChange}
+        value={this.searchTerm}
+        onChange={this.handleChange}
       />
      <table>
        <tbody>
          <tr><td><b>Location</b></td><td><b>Speed</b></td><td><b>Status</b></td><td><b>Pricing</b></td><td><b>Code</b></td></tr>
          {searchResults.map(item => (
-          <tr><td><b>{item.location}</b></td><td>{item.speed}</td><td>{item.status}</td><td>{item.price}</td><td>{item.code}</td></tr>
+          <tr><td><b>{item.location}</b></td><td>{item.speed}</td><td>{item.status}</td><td>{item.price}</td><td>{item.code}</td><td>{this.buttonToggle}</td></tr>
         ))}
         </tbody>
         </table>
     
     </div>
   );
+         }
 }
 
 export default Search;
