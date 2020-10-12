@@ -2,22 +2,11 @@ import React, { useState } from "react";
 
 const callAPI = () => {
     fetch("http://localhost:9000/users")
-      .then(r => r.text())
-      .then(resp => {
-        return JSON.stringify(resp);
-      });
+      .then(response => response.json())
+      .then(response => {console.log(response)})
+      .then(response => {return (response)}
+      )
 }
-
-const checkCredentials = () => {
-    console.log("biip");
-    var data = callAPI();
-    if (data.includes(this.state.username)) {
-        console.log("beep");
-    }
-    else {
-        console.log("boop");
-    }
- }
 
 
 class Login extends React.Component {
@@ -34,12 +23,34 @@ class Login extends React.Component {
 }
 
 checkCredentials = (event) => {
-    
+    let uname = this.state.username;
+    let pss = this.state.password;
     event.preventDefault();
     console.log("biip");
-    var data = callAPI();
-    console.log(Array.isArray(data));
-    console.log(data);
+    var data1 = fetch("http://localhost:9000/users")
+    .then(response => response.json())
+    .then(response => {
+      response.map((r) => {
+          console.log(r.username);
+          if (r.username === uname && r.password === pss) {
+            console.log("true");
+            return true;
+            
+            }
+        else {console.log("false");}});
+        console.log(response);
+    })
+    .then(response => {
+        
+    })
+    //else { console.log("boop")}}
+    
+ //   .then(response => {return (response.json())}
+/*    .then(response => {console.log(response)})
+    .then(response => {return (response.json())}
+  */  
+
+
     /*
     if (data.includes(this.state.username)) {
         console.log("beep");
