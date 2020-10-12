@@ -2,23 +2,15 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Search from './search.js';
 import Login from './containers/login.js';
+//import { search } from '../../../Express/app';
 
-const locations = [
-  /*{
-    location: 'Helsinki',
-    speed: 'fast'
-  },*/  
-  "Helsinki 1",
-  "Helsinki 2",
-  "Oulu",
-  "Tampere",
-  "Turku"
-]
+
 
 //const [hello, setHello] = useState('No data')
 
+
 const callAPI = () => {
-    fetch("http://localhost:9000/newroute")
+    fetch("http://localhost:9000/users")
       .then(r => r.text())
       .then(resp => {
         console.log(resp);
@@ -41,6 +33,37 @@ class App extends React.Component {
     this.setState({contents: <Login />});
   }
 
+checkCredentials = () => {
+    console.log("biip");
+    var data = callAPI();
+    if (data.includes(this.state.username)) {
+        console.log("beep");
+    }
+    else {
+        console.log("boop");
+    }
+ }
+
+ displayChange = () => {
+   var search = document.getElementById("search");
+   var login = document.getElementById("login");
+
+   if (login.style.display === "block") {
+    login.style.display = "none";
+  } else {
+    login.style.display = "block";
+  }
+
+   if (search.style.display === "none") {
+     search.style.display = "block";
+   } else {
+     search.style.display = "none";
+   }
+
+  
+ }
+
+
   /*const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
   const handleChange = event => {
@@ -54,11 +77,14 @@ React.useEffect(() => {
   }, [searchTerm]);
   callAPI('halp');
 */
+
 render () {
-return (
+//callAPI();
+  return (
   <div>
-  
-  {this.state.contents}
+  <button onClick={this.displayChange}>Login</button>
+  <div id="search"><Search /></div>
+  <div id="login"><Login /></div>
   </div>
   ); }
 }

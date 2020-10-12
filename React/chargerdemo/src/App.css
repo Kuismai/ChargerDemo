@@ -17,6 +17,10 @@
   color: #61dafb;
 }
 
-li {
-  align-items: left;
+#login {
+  display: none;
+}
+
+#search {
+  display: block;
 }

@@ -1,126 +1,156 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
+/*
+const callAPI = () => {
+  fetch("http://localhost:9000/newroute")
+    .then(r => r.text())
+    .then(resp => {
+      return(resp);
+    });
+}
+*/
+
 const locations = [
   {
     location: 'Helsinki 1',
     speed: 'fast',
     status: 'in use',
-    price: 'premium'
+    price: 'premium',
+    code: 'HKI1'
   },
   {
     location: 'Helsinki 2',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'HKI2'
   },
   {
     location: 'Helsinki 3',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'HKI3'
   },
   {
     location: 'Espoo 1',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'ESP1'
   },
   {
     location: 'Espoo 2',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'ESP2'
   },
   {
     location: 'Oulu 1',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'OUL1'
   },
   {
     location: 'Oulu 2',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'OUL2'
   },
   {
     location: 'Tampere',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'TAMP'
   },
   {
     location: 'Turku',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'TURK'
   },
   {
     location: 'Rovaniemi',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'ROVA'
   },
   {
     location: 'Jyväskylä',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'JYVA'
   },
   {
     location: 'Lohtaja',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'LOHT'
   },
   {
     location: 'Kotka',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'KOTK'
   },
   {
     location: 'Kajaani',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'KAJA'
   },
   {
     location: 'Kuopio',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'KUOP'
   },
   {
     location: 'Kokkola',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'KOKK'
   },
   {
     location: 'Tornio',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'TORN'
   },
   {
     location: 'Vilppula',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'VILP'
   },
   {
     location: 'Peräkylä',
     speed: 'slow',
     status: 'free',
-    price: 'free'
+    price: 'free',
+    code: 'PERA'
   },
   {
     location: 'Tönölä',
     speed: 'fast',
     status: 'free',
-    price: 'premium'
+    price: 'premium',
+    code: 'TONO'
   }
 ]
 
@@ -138,6 +168,7 @@ function Search() {
     setSearchTerm(event.target.value);
   };
 React.useEffect(() => {
+  //const locations = callAPI();
     const results = locations.filter(locations =>
       locations.location.toLowerCase().includes(searchTerm)
     );
@@ -156,10 +187,12 @@ React.useEffect(() => {
         onChange={handleChange}
       />
      <table>
-         <tr><td><b>Location</b></td><td><b>Speed</b></td><td><b>Status</b></td><td><b>Pricing</b></td></tr>
+       <tbody>
+         <tr><td><b>Location</b></td><td><b>Speed</b></td><td><b>Status</b></td><td><b>Pricing</b></td><td><b>Code</b></td></tr>
          {searchResults.map(item => (
-          <tr><td><b>{item.location}</b></td><td>{item.speed}</td><td>{item.status}</td><td>{item.price}</td></tr>
+          <tr><td><b>{item.location}</b></td><td>{item.speed}</td><td>{item.status}</td><td>{item.price}</td><td>{item.code}</td></tr>
         ))}
+        </tbody>
         </table>
     
     </div>
