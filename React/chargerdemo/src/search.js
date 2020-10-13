@@ -189,7 +189,7 @@ React.useEffect(() => {
        <tbody>
          <tr><td><b>Location</b></td><td><b>Speed</b></td><td><b>Status</b></td><td><b>Pricing</b></td><td><b>Code</b></td></tr>
          {searchResults.map(item => (
-          <tr><td><b>{item.location}</b></td><td>{item.speed}</td><td>{item.status}</td><td>{item.price}</td><td>{item.code}</td><td></td></tr>
+          <tr><td><b>{item.location}</b></td><td>{item.speed}</td><td>{item.status}</td><td>{item.price}</td><td>{item.code}</td><td><button name="charger"></button></td></tr>
         ))}
         </tbody>
         </table>

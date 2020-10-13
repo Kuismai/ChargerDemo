@@ -87,6 +87,7 @@ handleInputChange(event) {
                 <input
                 name="username"
                 type="text"
+                placeholder="e.g. test1"
                 value={this.state.username}
                 onChange={this.handleInputChange}
                  />
@@ -96,6 +97,7 @@ handleInputChange(event) {
                 <input
                 name="password"
                 type="text"
+                placeholder="e.g. test2"
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 />

@@ -34,14 +34,14 @@ class App extends React.Component {
     this.setState({account: childData})
 }
 
-buttonText = "blah";
+buttonText = "Account";
 
 
 
  displayChange = () => {
    var search = document.getElementById("search");
    var login = document.getElementById("login");
-    var charger = document.getElementsByName("charger");
+   var charger = document.getElementsByName("charger");
 
    if (login.style.display === "block") {
     login.style.display = "none";
@@ -57,11 +57,11 @@ buttonText = "blah";
      search.style.display = "none";
      this.buttonText = "Search";
    }
-
+/*
    if (this.state.account !== null) {
     charger.style.display = "block";
    }
-  
+  */
  }
 
 
@@ -82,7 +82,7 @@ React.useEffect(() => {
 render () {
 //callAPI();
   return (
-  <div>
+  <div width="100%">
   <button onClick={this.displayChange}>{this.buttonText}</button>
   <div id="search"><Search dataParenttoChild = {this.state.account}/><DisplayMapClass/></div>
   <div id="login"><Login parentCallback = {this.handleCallback}/></div>

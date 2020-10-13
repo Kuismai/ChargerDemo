@@ -56,11 +56,22 @@ export class DisplayMapClass extends React.Component {
         // show info bubble
         ui.addBubble(bubble);
       }, false);
+
+      var data1 = fetch("http://localhost:9000/locations")
+      .then(response => response.json())
+      .then(response => 
+        response.forEach((r) => {
+          addMarkerToGroup(group, {lat:r.lat, lng:r.long},
+            '<p>' + r.location + '</p><p>' + r.code + '</p><p>' + r.status + '</p><p>' + r.speed + '</p><p>'
+            + r.price + '</p>');
+            }
+      
+      ))
     
-      addMarkerToGroup(group, {lat:65.01236, lng:25.46816},
+/*      addMarkerToGroup(group, {lat:65.01236, lng:25.46816},
         '<div><a href="http://www.mcfc.co.uk" target="_blank">Manchester City</a>' +
         '</div><div >City of Manchester Stadium<br>Capacity: 48,000</div>');
-    
+  */  
     
     
     }
@@ -110,7 +121,7 @@ const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
   render() {
     return (
       // Set a height on the map so it will display
-      <div ref={this.mapRef} style={{ height: "600px"}} />
+      <div ref={this.mapRef} style={{ height: "600px", width: "500px"}} />
       
     );
   }
