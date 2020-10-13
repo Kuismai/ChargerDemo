@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 const locations = [
-      {
+    {
         location: 'Espoo 1',
         speed: 'fast',
         status: 'in use',
@@ -11,8 +11,8 @@ const locations = [
         code: 'ESP1',
         lat: '60.307',
         long: '24.655'
-      },
-      {
+    },
+    {
         location: 'Espoo 2',
         speed: 'fast',
         status: 'free',
@@ -20,8 +20,8 @@ const locations = [
         code: 'ESP2',
         lat: '60.205',
         long: '24.656'
-      },
-      {
+    },
+    {
       location: 'Helsinki 1',
       speed: 'fast',
       status: 'in use',
@@ -65,8 +65,8 @@ const locations = [
         code: 'KAJA',
         lat: '64.227',
         long: '27.728'
-      },
-      {
+    },
+    {
         location: 'Kokkola',
         speed: 'fast',
         status: 'free',
@@ -74,8 +74,8 @@ const locations = [
         code: 'KOKK',
         lat: '63.839',
         long: '23.131'
-      },
-        {
+    },
+    {
       location: 'Kotka',
       speed: 'fast',
       status: 'free',
@@ -101,8 +101,8 @@ const locations = [
         code: 'LOHT',
         lat: '64.025',
         long: '23.505'
-      },
-      {
+    },
+    {
       location: 'Oulu 1',
       speed: 'fast',
       status: 'in use',
@@ -128,8 +128,8 @@ const locations = [
         code: 'PERA',
         lat: '61.317',
         long: '21.667'
-      },
-      {
+    },
+    {
         location: 'Rovaniemi',
         speed: 'fast',
         status: 'free',
@@ -137,8 +137,8 @@ const locations = [
         code: 'ROVA',
         lat: '66.503',
         long: '25.727'
-      },
-      {
+    },
+    {
       location: 'Tampere',
       speed: 'fast',
       status: 'free',
@@ -155,8 +155,8 @@ const locations = [
         code: 'TORN',
         lat: '65.843',
         long: '24.147'
-      },
-      {
+    },
+    {
       location: 'Turku',
       speed: 'fast',
       status: 'in use',
@@ -173,7 +173,7 @@ const locations = [
         code: 'TONO',
         lat: '62.307',
         long: '25.204'
-      },
+    },
     {
       location: 'Vilppula',
       speed: 'slow',
@@ -184,7 +184,7 @@ const locations = [
       long: '24.505'
     }
     
-  ]
+]
 
 router.get('/', function(req, res, next) {
   res.send(locations);
