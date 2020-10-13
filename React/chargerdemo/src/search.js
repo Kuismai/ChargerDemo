@@ -10,7 +10,7 @@ const callAPI = () => {
     });
 }
 */
-
+/*
 const locations = [
   {
     location: 'Helsinki 1',
@@ -169,11 +169,21 @@ function Search() {
   };
 React.useEffect(() => {
   //const locations = callAPI();
-    const results = locations.filter(locations =>
-      locations.location.toLowerCase().includes(searchTerm)
-    );
-    setSearchResults(results);
-  }, [searchTerm]);
+  const data = fetch("http://localhost:9000/locations")
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        console.log(Array.isArray(response));
+        
+        const results = response.filter(response =>
+          response.location.toLowerCase().includes(searchTerm)
+        );
+        setSearchResults(results);
+      }, [searchTerm]);
+
+      })
+    
+    
 
   return (
     <div className="App">
@@ -189,7 +199,7 @@ React.useEffect(() => {
        <tbody>
          <tr><td><b>Location</b></td><td><b>Speed</b></td><td><b>Status</b></td><td><b>Pricing</b></td><td><b>Code</b></td></tr>
          {searchResults.map(item => (
-          <tr><td><b>{item.location}</b></td><td>{item.speed}</td><td>{item.status}</td><td>{item.price}</td><td>{item.code}</td><td><button name="charger"></button></td></tr>
+          <tr><td><b>{item.location}</b></td><td>{item.speed}</td><td>{item.status}</td><td>{item.price}</td><td>{item.code}</td><td><button name="charger">Charge</button></td></tr>
         ))}
         </tbody>
         </table>

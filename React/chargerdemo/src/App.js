@@ -4,6 +4,7 @@ import Search from './search.js';
 import Login from './containers/login.js';
 //import { search } from '../../../Express/app';
 import {DisplayMapClass} from './DisplayMapClass';
+import Legend from './legend.js';
 
 
 
@@ -41,7 +42,7 @@ buttonText = "Account";
  displayChange = () => {
    var search = document.getElementById("search");
    var login = document.getElementById("login");
-   var charger = document.getElementsByName("charger");
+   var charger = document.getElementsByName("Charge");
 
    if (login.style.display === "block") {
     login.style.display = "none";
@@ -57,11 +58,7 @@ buttonText = "Account";
      search.style.display = "none";
      this.buttonText = "Search";
    }
-/*
-   if (this.state.account !== null) {
-    charger.style.display = "block";
-   }
-  */
+
  }
 
 
@@ -84,7 +81,7 @@ render () {
   return (
   <div width="100%">
   <button onClick={this.displayChange}>{this.buttonText}</button>
-  <div id="search"><Search dataParenttoChild = {this.state.account}/><DisplayMapClass/></div>
+  <div id="search"><Search dataParenttoChild = {this.state.account}/><DisplayMapClass/><Legend /></div>
   <div id="login"><Login parentCallback = {this.handleCallback}/></div>
   <div id="account"></div>
   </div>
