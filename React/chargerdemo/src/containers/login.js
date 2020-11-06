@@ -35,17 +35,17 @@ checkCredentials = (event) => {
           if (valid == false) {
             if (r.username === uname && r.password === pss) {
                 valid = true;
+                this.state.account = this.state.username;
+                this.onTrigger();
             }
           }
         });
 
+        
+
       return valid;
     });
-
-    if (data1) {
-        this.state.account = this.state.username;
-        this.onTrigger();
-    }
+    
 
     
 }
